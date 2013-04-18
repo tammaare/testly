@@ -23,7 +23,8 @@
 <![endif]-->
 <!-- Add your site or application content here -->
 <?php
-require '/views/controller_action_view.php'
+//nõuame views kaustast vastava kontrolleri, vastava actioni(funktsiooni) vaatefaili
+require '/views/'.$request->controller.'_'.$request->action.'_view.php';
 ?>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
