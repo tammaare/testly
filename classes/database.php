@@ -8,12 +8,19 @@ mysql_query("SET NAMES 'utf8'");
 mysql_query("SET CHARACTER 'utf8'");
 
 // meetod get_one kutsutakse välja näiteks auth.phps, kus antakse talle parameeter $sql(päring)
+function get_all($sql){
+	$q=mysql_query($sql) or exit(mysql_error());
+	while (($result[]=mysql_fetch_assoc($q)) || array_pop($result)) {
+	;
+	}
+	return $result;
+}
 function get_one($sql, $debug = FALSE)
 {
 	//Kui debug väärtus on true, siis läbib ifi sisu
 	if ($debug) {
 		print"<pre>$sql</pre>";
-	}
+		}
 // loome muutuja $q, mille väärtuseks on kas päring($sql) või viskab meid välja funktsioonist ja annab veateade
 	$q = mysql_query($sql) or exit(mysql_error());
 

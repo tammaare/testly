@@ -15,6 +15,10 @@ class tests
 	function index()
 	{
 		global $request;
+		global $_users;
+		$tests=get_all("SELECT * FROM test NATURAL JOIN user WHERE test.deleted=0");
+		//var_dump($tests);
+		// Merge master view
 		require 'views/master_view.php';
 	}
 }

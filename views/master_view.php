@@ -28,7 +28,7 @@
 		}
 		body,html
 		{
-			background:url('<?=BASE_URL?>assets/img/back.jpg');
+			background:url('<?=BASE_URL?>assets/img/bg.jpg');
 			height: 100%;
 
 		}
