@@ -18,6 +18,7 @@
 		<td><?=$test['date']?></td>
 		<td><?="vaata"?>
 			<i class="icon-pencil"></i> </td>
+		<a href="<?BASE_URL?>tests/remove/<?"
 	</tr>
 	<? endforeach;endif?>
 	</tbody>

@@ -3,10 +3,25 @@
 mysql_connect(DATABASE_HOSTNAME, DATABASE_USERNAME) or mysql_error();
 //valin oma andmebaasi või annan errori
 mysql_select_db(DATABASE_DATABASE) or mysql_error();
-//päringud, mille saadan serverisse on utf kodeeringuga
+//päringud, mille saadan serverisse on utf kodeeringuga{
 mysql_query("SET NAMES 'utf8'");
 mysql_query("SET CHARACTER 'utf8'");
 
+function q($sql, &$query_pointer=NULL, $debug = FALSE){
+	if ($debug) {
+		print"<pre>$sql</pre>";
+	}
+	$query_pointer=mysql_query($sql) or mysql_error();
+	switch(substr($sql,0,4)) {
+		case 'SELE':
+			return mysql_num_rows($query_pointer);
+		case 'INSE':
+			return mysql_insert_id();
+		default:
+			return mysql_affected_rows();
+
+	}
+}
 // meetod get_one kutsutakse välja näiteks auth.phps, kus antakse talle parameeter $sql(päring)
 function get_all($sql){
 	$q=mysql_query($sql) or exit(mysql_error());
