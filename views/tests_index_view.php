@@ -16,9 +16,10 @@
 		<td><?=$test['name']?></td>
 		<td><?=$test['username']?></td>
 		<td><?=$test['date']?></td>
-		<td><?="vaata"?>
-			<i class="icon-pencil"></i> </td>
-		<a href="<?BASE_URL?>tests/remove/<?"
+		<td>
+			<i class="icon-pencil"></i>
+		<a href="<?=BASE_URL?>tests/remove/<?=$test['test_id']?>">
+		   <i class="icon-trash"></i>Kustuta</a></td>
 	</tr>
 	<? endforeach;endif?>
 	</tbody>
