@@ -14,6 +14,7 @@ class tests
 
 	function index()
 	{
+		$this->scripts[]='tests.js';
 		global $request;
 		global $_users;
 		$tests=get_all("SELECT * FROM test NATURAL JOIN user WHERE test.deleted=0");
