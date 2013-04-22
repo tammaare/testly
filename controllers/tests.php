@@ -18,6 +18,10 @@ class tests
 		global $request;
 		global $_users;
 		$tests = get_all("SELECT * FROM test NATURAL JOIN user WHERE test.deleted=0");
+		$id=$_SESSION['user_id'];
+		$status=get_one("SELECT status FROM user WHERE user_id='$id'");
+
+
 		//var_dump($tests);
 		// Merge master view
 		require 'views/master_view.php';
@@ -33,5 +37,9 @@ class tests
 
 	function edit(){
 		global $request;
-			require 'views/master_view.php';}
+		$id=$request->params[0];
+		$test=get_all("SELECT * FROM test WHERE test_id='$id'");
+		$test=$test[0];
+			require 'views/master_view.php';
+	}
 }
