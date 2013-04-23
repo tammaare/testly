@@ -1,5 +1,34 @@
 var current_type_id = 2;
 
+function addMultipleChoice(){
+
+	var html='<div class="answer-option"><input type="radio" name="mc.correct" value="<id>">&nbsp;<textarea name="mc.answer.<id>"></textarea></div>';
+var id=$('#multiple-choice-options textarea').lenght;
+	html=html.replace(/<id>/g,id);
+	$('#multiple-choice-options').append(html);
+	return false;
+}
+function addMultipleResponse(){
+
+	var html='<div class="answer-option"><input type="checkbox" name="mc.correct" value="<id>">&nbsp;<textarea name="mc.answer.<id>"></textarea></div>';
+	var id=$('#multiple-response-answer-option textarea').lenght;
+	html=html.replace(/<id>/g,id);
+	$('#multiple-response-answer-option').append(html);
+	return false;
+}
+
+function removeMultipleChoice(){
+	if ($('#multiple-choice-options textarea').length>1){
+		$('#multiple-choice-options .answer-option:last').remove();
+}
+		return false;
+}
+function removeMultipleResponse(){
+	if ($('#multiple-response-answer-option textarea').length>1){
+		$('#multiple-response-answer-option .answer-option:last').remove();
+	}
+		return false
+}
 function checkForm() {
 	var elements = $('#type_id_' + current_type_id + 'input[type=checkbox]:not(.shuffle_answers), #type_id_' + current_type_id + 'input[type=radio]:not(.shuffle_answers)');
 	var textboxes = $('#type_id_' + current_type_id + 'textarea');
@@ -11,7 +40,7 @@ function checkForm() {
 	alert("Palun märkida õige vastus");
 	return false;
 }
-$(document).ready(function () {
+$(function () {
 	$('#answer-template .answer-template').hide();
 	$('#type_id_' + current_type_id).show();
 	$('#type_id').bind('click change focus', function (event) {
